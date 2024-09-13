@@ -76,7 +76,9 @@ void streamCallback(StreamData data)
     line1 = value;
     lcd.clear(); 
     lcd.setCursor(0, 0);
+    lcd.print("SG:");
     lcd.print(line1);
+    lcd.print("API Gravity:");
     lcd.setCursor(0, 1);
     lcd.print(line2);
   }
@@ -87,8 +89,10 @@ void streamCallback(StreamData data)
     line2 = value;
     lcd.clear(); 
     lcd.setCursor(0, 0);
+    lcd.print("SG:");
     lcd.print(line1);
     lcd.setCursor(0, 1);
+    lcd.print("API Gravity:");
     lcd.print(line2);
 
   }
@@ -183,16 +187,21 @@ void setup() {
   Serial.println(uid);
 
   path = "devices/" + uid + "/reading";
+    lcd.clear(); 
+  lcd.setCursor(0, 0);
+  lcd.print("HydroAI");
+
+     //Stream setup
+  if (!Firebase.beginStream(stream, "devices/" + uid + "/data"))
+    Serial.printf("sream begin error, %s\n\n", stream.errorReason().c_str());
+
+  Firebase.setStreamCallback(stream, streamCallback, streamTimeoutCallback);
 }
 
 void loop() {
-
     readMoisture();
-  
     readTemp();
-
     printData();
-  
     updateData();
 }
 
