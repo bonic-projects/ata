@@ -119,7 +119,7 @@ void setup() {
   lcd.backlight();
   lcd.clear(); 
   lcd.setCursor(0, 0);
-  lcd.print("SMART TROLLEY");
+  lcd.print("HydroAi");
   lcd.setCursor(0, 1);
   lcd.print("Connecting wifi..");
 
@@ -226,7 +226,6 @@ void printData(){
 
 void readMoisture(){
  moistureLevel = analogRead(moisturePin);
-moistureLevel = 25;
 } 
 
 void readTemp(){
