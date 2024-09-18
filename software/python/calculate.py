@@ -3,7 +3,7 @@ import csv
 import time
 
 # Set the credentials to access Firebase
-cred = credentials.Certificate('hydroai-53e89-firebase-adminsdk-69ql5-aeb6ce7b5a.json')
+cred = credentials.Certificate('hydroai-53e89-firebase-adminsdk-69ql5-0a5599212f.json')
 initialize_app(cred, {
     'databaseURL': 'https://hydroai-53e89-default-rtdb.asia-southeast1.firebasedatabase.app/'
 })
@@ -12,8 +12,8 @@ initialize_app(cred, {
 ref = db.reference("/devices/FJwEbU5AfCS5Zg8Cs2D1DfJMQuI2/reading/")
 
 # Define the CSV file name and header row
-csv_file = 'hydropod_data.csv'
-header = ['moisture', 'temp', 'ts', 'SG', 'API_Gravity']
+csv_file = 'hydroai_data.csv'
+header = ['moisture', 'temp', 'ts', 'SG', 'API_Gravity', 'Density']
 
 # Initialize CSV file with header if it doesn't exist
 try:
@@ -31,6 +31,10 @@ def analog_to_sg(analog_output, max_analog_output=4095):
 def calculate_api_gravity(sg):
     return (141.5 / sg) - 131.5
 
+# Calculate Density from Specific Gravity (SG)
+def calculate_density(sg):
+    return sg * 1000  # Density in kg/m³
+
 # Listen to the database changes
 def on_data_change(event):
     data = event.data
@@ -39,16 +43,21 @@ def on_data_change(event):
         temp = data.get('temp', 'N/A')
         ts = data.get('ts', 'N/A')
         
-        # Convert moisture value (analog output) to specific gravity and calculate API gravity
+        # Convert moisture value (analog output) to specific gravity, calculate API gravity and density
         if moisture is not None and moisture != 'N/A':
             analog_output = int(moisture)  # Ensure moisture is treated as an integer
             sg = analog_to_sg(analog_output)
             api_gravity = calculate_api_gravity(sg)
+            density = calculate_density(sg)
         else:
             sg = 'N/A'
             api_gravity = 'N/A'
+            density = 'N/A'
 
-        row = [moisture, temp, ts, sg, api_gravity]
+        # Add the calculated data to the row
+        row = [moisture, temp, ts, sg, api_gravity, density]
+
+        # Save the row to the CSV file
         if moisture is not None and temp is not None and ts is not None:
             with open(csv_file, mode='a', newline='') as file:
                 writer = csv.writer(file)

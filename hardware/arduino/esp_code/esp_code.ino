@@ -89,7 +89,7 @@ void streamCallback(StreamData data)
     line2 = value;
     lcd.clear(); 
     lcd.setCursor(0, 0);
-    lcd.print("SG:");
+    lcd.print("Density:");
     lcd.print(line1);
     lcd.setCursor(0, 1);
     lcd.print("API Gravity:");
