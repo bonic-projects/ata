@@ -28,11 +28,13 @@ class DatabaseService with ListenableServiceMixin {
         }
       });
       starCountRefer.onValue.listen((DatabaseEvent event) {
-        print("Reading..");
+        print("Reading l1..");
         if (event.snapshot.exists) {
           print(event.snapshot.value);
           _node1 = DeviceData.fromMap(event.snapshot.value as Map);
-          print(_node1?.l1); //data['time']
+          print(_node1?.l1);
+          print(_node1?.l2);
+
           notifyListeners();
         }
       });

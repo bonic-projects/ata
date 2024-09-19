@@ -70,14 +70,14 @@ class HomeView extends StackedView<HomeViewModel> {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'SG: ${viewModel.node1?.l1}',
+                        'Density: ${double.tryParse(viewModel.l1)?.toStringAsFixed(2) ?? viewModel.l1}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
                       Text(
-                        'API Gravity: ${viewModel.node1?.l2}',
+                        'API Gravity: ${viewModel.l2}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -124,7 +124,7 @@ class HomeView extends StackedView<HomeViewModel> {
 
           // Value Display
           Text(
-            "${value.toStringAsFixed(1)}$unit",
+            "${value.toStringAsFixed(1)}$unit", // Convert double to string properly
             style: GoogleFonts.robotoMono(
               fontSize: 24,
               color: Colors.white,
@@ -135,6 +135,12 @@ class HomeView extends StackedView<HomeViewModel> {
         ],
       ),
     );
+  }
+
+  @override
+  void onViewModelReady(HomeViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+    viewModel.runStartupLogic();
   }
 
   @override

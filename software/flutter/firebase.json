@@ -1,1 +1,36 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"hydroai-53e89","appId":"1:457935623953:android:7959f96a5c1d40d73adeb0","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"hydroai-53e89","configurations":{"android":"1:457935623953:android:7959f96a5c1d40d73adeb0","ios":"1:457935623953:ios:4fb126385cec92753adeb0","macos":"1:457935623953:ios:4fb126385cec92753adeb0","web":"1:457935623953:web:7edf259712252dd83adeb0","windows":"1:457935623953:web:0d25fc1b17eb8b2f3adeb0"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "hydroai-53e89",
+          "appId": "1:457935623953:android:7959f96a5c1d40d73adeb0",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "hydroai-53e89",
+          "configurations": {
+            "android": "1:457935623953:android:7959f96a5c1d40d73adeb0",
+            "ios": "1:457935623953:ios:4fb126385cec92753adeb0",
+            "macos": "1:457935623953:ios:4fb126385cec92753adeb0",
+            "web": "1:457935623953:web:7edf259712252dd83adeb0",
+            "windows": "1:457935623953:web:0d25fc1b17eb8b2f3adeb0"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  }
+}

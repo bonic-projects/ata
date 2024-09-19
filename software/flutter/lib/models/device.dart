@@ -25,8 +25,8 @@ class DeviceReading {
 }
 
 class DeviceData {
-  String l1;
-  String l2;
+  double l1;
+  double l2;
 
   DeviceData({
     required this.l1,
