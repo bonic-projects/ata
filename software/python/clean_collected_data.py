@@ -1,8 +1,8 @@
 import csv
 
 # Input and output CSV file names
-input_file = 'hydroai_data.csv'
-output_file = 'cleaned_hydroai_data.csv'
+input_file = 'collected_data.csv'
+output_file = 'cleaned_data.csv'
 
 # Define the columns to extract in the desired order
 columns_to_extract = ['temp', 'Density', 'API_Gravity']

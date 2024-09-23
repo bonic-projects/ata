@@ -12,7 +12,7 @@ initialize_app(cred, {
 ref = db.reference("/devices/FJwEbU5AfCS5Zg8Cs2D1DfJMQuI2/reading/")
 
 # Define the CSV file name and header row
-csv_file = 'hydroai_data.csv'
+csv_file = 'collected_data.csv'
 header = ['moisture', 'temp', 'ts', 'SG', 'API_Gravity', 'Density']
 
 # Initialize CSV file with header if it doesn't exist
