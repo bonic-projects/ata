@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # Step 1: Load and prepare the dataset
-data = pd.read_csv('cleaned_hydroai_data.csv')
+data = pd.read_csv('cleaned_collected_data.csv')
 
 # Extract features and target
 X = data[['temp', 'Density']].values  # Features: temp and Density (without scaling)

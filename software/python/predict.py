@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from firebase_admin import credentials, initialize_app, db
 import time
+import bonic_cloud
 
 # Define the same neural network model as in ml_model.py
 class APIPredictor(nn.Module):
@@ -27,17 +27,10 @@ except Exception as e:
     print(f"Error loading model: {e}")
 
 # Firebase initialization
-try:
-    cred = credentials.Certificate('hydroai-53e89-firebase-adminsdk-69ql5-0a5599212f.json')
-    initialize_app(cred, {
-        'databaseURL': 'https://hydroai-53e89-default-rtdb.asia-southeast1.firebasedatabase.app/'
-    })
-    print("Firebase initialized successfully")
-except Exception as e:
-    print(f"Error initializing Firebase: {e}")
+bonic_cloud.init()
 
-ref = db.reference("/devices/FJwEbU5AfCS5Zg8Cs2D1DfJMQuI2/reading/")
-data_ref = db.reference("/devices/FJwEbU5AfCS5Zg8Cs2D1DfJMQuI2/data")
+ref = bonic_cloud.get_ref()
+data_ref = bonic_cloud.get_data_ref()
 
 # Function to predict API gravity without using a scaler
 def predict_api_gravity(temp, density):

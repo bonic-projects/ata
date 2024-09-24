@@ -2,7 +2,7 @@ import csv
 
 # Input and output CSV file names
 input_file = 'collected_data.csv'
-output_file = 'cleaned_data.csv'
+output_file = 'cleaned_collected_data.csv'
 
 # Define the columns to extract in the desired order
 columns_to_extract = ['temp', 'Density', 'API_Gravity']

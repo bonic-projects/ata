@@ -1,15 +1,9 @@
-from firebase_admin import credentials, initialize_app, db
 import csv
 import time
+import bonic_cloud
 
-# Set the credentials to access Firebase
-cred = credentials.Certificate('hydroai-53e89-firebase-adminsdk-69ql5-0a5599212f.json')
-initialize_app(cred, {
-    'databaseURL': 'https://hydroai-53e89-default-rtdb.asia-southeast1.firebasedatabase.app/'
-})
-
-# Get a reference to the database service
-ref = db.reference("/devices/FJwEbU5AfCS5Zg8Cs2D1DfJMQuI2/reading/")
+bonic_cloud.init()
+ref = bonic_cloud.get_ref()
 
 # Define the CSV file name and header row
 csv_file = 'collected_data.csv'
