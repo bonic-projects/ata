@@ -26,7 +26,7 @@ try:
 except Exception as e:
     print(f"Error loading model: {e}")
 
-# Firebase initialization
+# Bonic cloud initialization
 bonic_cloud.init()
 
 ref = bonic_cloud.get_ref()
@@ -86,9 +86,9 @@ def on_data_change(event):
 
                 data_ref.update({
                     'l1': density,
-                    'l2': api_gravity_formatted
+                    'l2': round(predicted_api_gravity, 2) 
                 })
-                print('Firebase updated with API Gravity:', api_gravity_formatted)
+                print('Bonic cloud updated with API Gravity:', round(predicted_api_gravity, 2))
             else:
                 print('Prediction failed')
         else:
@@ -96,7 +96,7 @@ def on_data_change(event):
     else:
         print('No data found in event')
 
-# Set up Firebase listener
+# Set up Bonic cloud listener
 try:
     ref.listen(on_data_change)
     print('Listening for data changes...')
